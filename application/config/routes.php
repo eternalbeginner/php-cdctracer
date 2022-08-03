@@ -58,6 +58,7 @@ $route['admin']         = "backend/dashboard/index";
 $route['admin/alumni']  = "backend/users/user/3";
 $route['admin/kepsek']  = 'backend/kepsek';
 $route['admin/panitia'] = "backend/users/user/2";
+$route['admin/survey']  = "backend/survey/detailSurvey";
 
 $route["admin/user/(:any)/import"] = "backend/users/importUser/$1";
 
