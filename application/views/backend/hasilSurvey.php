@@ -52,7 +52,7 @@
                                             
                                         </div>
                                         <div class="card-body">
-                                            <canvas id="pieChart<?= $sp->id ?>" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                            <canvas id="pieChart<?= $sp->id ?>" style="min-height: 500px; height: auto; max-height: 100vh; max-width: 100%;"></canvas>
                                         </div>
                                         <?php 
                                             $pertanyaan = array();
@@ -82,32 +82,27 @@
                                         <!-- /.card-body -->
                                         <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js"></script>
 
-                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
-
                                         <script>
                                             $(function(){
-                                                var pieChart ='#pieChart<?= $sp->id ?>';
-                                                var pieChartCanvas = $(pieChart).get(0).getContext('2d');
-                                                var donutData        = {
-                                                labels: [<?= join(',', $jmlhJawaban) ?>],
-                                                datasets: [
-                                                    {
-                                                    data: [<?= join(',', $jmlhJawaban) ?>],
-                                                    backgroundColor : [<?= join(',', $pilihWarna) ?>],
-                                                    }
-                                                ]
+                                                var chartId ='#pieChart<?= $sp->id ?>';
+                                                var chartCanvas = $(chartId).get(0).getContext('2d');
+                                                var chartData = {
+                                                    labels: [<?= implode(',', $pertanyaan); ?>],
+                                                    datasets: [
+                                                        {
+                                                            data: [<?= implode(',', $jmlhJawaban); ?>],
+                                                            backgroundColor : [<?= implode(',', $pilihWarna) ?>],
+                                                        }
+                                                    ]
                                                 }
-                                                var pieData        = donutData;
-                                                var pieOptions     = {
-                                                maintainAspectRatio : false,
-                                                responsive : true,
-                                                }
-                                                //Create pie or douhnut chart
-                                                // You can switch between pie and douhnut using the method below.
-                                                var pieChart = new Chart(pieChartCanvas, {
-                                                type: 'pie',
-                                                data: pieData,
-                                                options: pieOptions      
+
+                                                new Chart(chartCanvas, {
+                                                    type: 'doughnut',
+                                                    data: chartData,
+                                                    options: {
+                                                        maintainAspectRatio : false,
+                                                        responsive : true,
+                                                    }   
                                                 });
                                             });
 

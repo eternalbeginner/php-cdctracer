@@ -175,7 +175,7 @@
             </div>
             <!-- /.card -->
           </div>
-          <div class="mt-4">
+          <div class="col-12">
             <?php if (is_null($pertanyaan_terpilih)) : ?>
               <h3>Silahkan pilih pertanyaan untuk ditampilkan</h3>
             <?php else : ?>
@@ -215,9 +215,6 @@
                   ?>
                   <!-- /.card-body -->
                   <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js"></script>
-
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
-
                   <script>
                     $(function() {
                       var pieChart = '#pieChart<?= $pertanyaan_terpilih->id ?>';
@@ -279,10 +276,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
-  <script>
+  <script src="<?= base_url('assets/backend/') ?>plugins/jquery/jquery.min.js"></scrip  <script>
     $(function() {
       var pieChart = '#jkChartDSN';
       var pieChartCanvas = $(pieChart).get(0).getContext('2d');

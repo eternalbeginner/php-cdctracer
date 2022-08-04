@@ -48,8 +48,25 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets/backend/') ?>dist/js/demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
 <script>
+    Chart.register(ChartDataLabels)
+
+    Chart.defaults.type = 'doughnut';
+    Chart.defaults.plugins.tooltips = { enabled: false };
+    Chart.defaults.plugins.datalabels = {
+        formatter: (value, ctx) => {
+            let sum = ctx.chart.data.datasets[0].data.reduce((p, c) => {
+                return p + c
+            }, 0);
+            let percentage = (value * 100 / sum).toFixed(2) + "%";
+            return percentage;
+        },
+        color: "#fff"
+    }
+
   jQuery(document).ready(function() {
     window.setTimeout(function() {
       jQuery("#alertlogin").fadeTo(500, 0).slideUp(500, function() {
